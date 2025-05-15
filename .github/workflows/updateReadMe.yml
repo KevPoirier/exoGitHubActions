@@ -1,0 +1,23 @@
+name: update ReadMe
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *' # every day at midnight UTC
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update ReadMe
+        run: |
+          echo "Last updated: $(date -u)" > README.md
+      
+      - name: Commit changes
+        run: |
+          git add README.md
+          git commit -m "auto: update README with timestamp" || echo "No changes"
+          git push
