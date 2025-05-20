@@ -56,6 +56,6 @@ jobs:
 
       - name: build app
         run: |
-          go build -o app
+          go build -o app main.go
           echo "result=✅ Build : réussi" >> $GITHUB_OUTPUT
           echo "build=success"
