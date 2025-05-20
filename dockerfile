@@ -2,7 +2,7 @@ FROM golang:1.24.2 as builder
 
 WORKDIR /app
 COPY . .
-RUN go build -o app ./cmd/webserver
+RUN go build -o app ./app/cmd/webserver
 WORKDIR /app/cmd/webserver
 
 FROM alpine:latest
