@@ -1,14 +1,9 @@
 name: Docker Build
 
-on: 
-    workflow_run:
-        workflows: BuildAndTestGO
-        types: 
-            - completed
+on: [push, pull_request]
 
 jobs:
   build-docker-image:
-    needs: BuildAndTestGO
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
