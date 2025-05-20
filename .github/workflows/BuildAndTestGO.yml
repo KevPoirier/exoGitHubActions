@@ -24,8 +24,6 @@ jobs:
       - name: build app
         run: |
             go build -o app ./app/cmd/webserver
-            echo "result=✅ Build : réussi" >> $GITHUB_OUTPUT
-            echo "build=success"
       
       - name: Upload artifact
         uses: actions/upload-artifact@v4
