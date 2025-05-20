@@ -15,42 +15,11 @@ jobs:
           go-version: '1.24.2'
 
       - name: Run Test
-        id: tests
-        run: |
-          if go test -v ./...; then
-            echo "result=✅ Tests : réussis" >> ]GITHUB_OUTPUT
-            echo "tests=success" >> $GITHUB_OUTPUT
-          else
-            echo "result=❌ Tests : échoués" >> $GITHUB_OUTPUT
-             echo "tests=failure" >> $GITHUB_OUTPUT
-            exit 1
-          fi
+        run: go test ./...
     
       - name: code quality 
         id: lint
-        run: |
-          if curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin; then
-            echo "result=✅ Lint : c'est bo" >> $GITHUB_OUTPUT
-          else
-            echo "result=❌ Lint : pas ouf" >> $GITHUB_OUTPUT
-            exit 1
-          fi
-
-      - name: Update README
-        run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          STATUS_SECTION="## 📊 Statut du code\n\n${{ steps.tests.outputs.result }}  \n${{ steps.lint.outputs.result }}  \n🕒 Dernière vérification : $TIMESTAMP"
-
-          # Remplace la section entre les balises <!--status-->...<!--endstatus-->
-          sed -i '/<!--status-->/, /<!--endstatus-->/c\<!--status-->\n'"$STATUS_SECTION"'\n<!--endstatus-->' README.md
-
-      - name: Commit README update
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          git add README.md
-          git commit -m "auto: mise à jour du statut du code" || echo "Pas de changements"
-          git push
+        run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 
       - name: build app
         run: |
