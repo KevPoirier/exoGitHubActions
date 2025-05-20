@@ -61,5 +61,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: poker-go
-          path: poker
+          name: app
+          path: app
