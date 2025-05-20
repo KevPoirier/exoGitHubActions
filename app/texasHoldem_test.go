@@ -1,7 +1,7 @@
 package poker_test
 
 import (
-	poker "exercices/app"
+	poker "exoGitHubActions/app"
 	"fmt"
 	"testing"
 	"time"

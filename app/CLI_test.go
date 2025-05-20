@@ -2,7 +2,7 @@ package poker_test
 
 import (
 	"bytes"
-	poker "exercices/app"
+	poker "exoGitHubActions/app"
 	"io"
 	"strings"
 	"testing"
@@ -11,7 +11,6 @@ import (
 var dummyBlindAlerter = &poker.SpyBlindAlerter{}
 var dummyPlayerStore = &poker.StubPlayerStore{}
 
-var dummyStdIn = &bytes.Buffer{}
 var dummyStdOut = &bytes.Buffer{}
 
 type GameSpy struct {

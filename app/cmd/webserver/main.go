@@ -1,7 +1,7 @@
 package main
 
 import (
-	poker "exercices/app"
+	poker "exoGitHubActions/app"
 	"log"
 	"net/http"
 )

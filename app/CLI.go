@@ -27,7 +27,7 @@ const PlayerPrompt = "Please enter the number of players: "
 
 const BadPlayerInputErrMsg = "Bad value received for number of players, please try again with a number"
 
-const BadWinnerInputErrMsg = "Bad value received for winner, please try again with a name followed by 'wins'"
+const BadWinnerInputErrMsg = "bad value received for winner, please try again with a name followed by 'wins'"
 
 func (cli *CLI) PlayPoker() {
 	fmt.Fprint(cli.out, PlayerPrompt)
