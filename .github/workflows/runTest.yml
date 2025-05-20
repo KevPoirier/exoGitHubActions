@@ -31,10 +31,8 @@ jobs:
         run: |
           if curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin; then
             echo "result=✅ Lint : c'est bo" >> $GITHUB_OUTPUT
-            echo "lint=success" >> $GITHUB_OUTPUT
           else
             echo "result=❌ Lint : pas ouf" >> $GITHUB_OUTPUT
-            echo "lint=failure" >> $GITHUB_OUTPUT
             exit 1
           fi
 
@@ -56,8 +54,12 @@ jobs:
 
       - name: build app
         run: |
-          if [ "${{ steps.tests.outputs.tests }}" = "success" ]; then
             go build -o app ./app/cmd/webserver
             echo "result=✅ Build : réussi" >> $GITHUB_OUTPUT
             echo "build=success"
-          fi
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: poker-go
+          path: poker
