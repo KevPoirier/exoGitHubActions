@@ -1,0 +1,22 @@
+[
+    {
+        "playerName": "Pepper",
+        "wins": 5
+    },
+    {
+        "playerName": "Salt",
+        "wins": 3
+    },
+    {
+        "playerName": "Sage",
+        "wins": 2
+    },
+    {
+        "playerName": "Thyme",
+        "wins": 1
+    },
+    {
+        "playerName": "Rosemary",
+        "wins": 0
+    }
+]
