@@ -19,8 +19,10 @@ jobs:
         run: |
           if go test -v ./...; then
             echo "result=✅ Tests : réussis" >> ]GITHUB_OUTPUT
+            echo "tests=success"
           else
             echo "result=❌ Tests : échoués" >> $GITHUB_OUTPUT
+             echo "tests=failure"
             exit 1
           fi
     
@@ -29,8 +31,10 @@ jobs:
         run: |
           if curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin; then
             echo "result=✅ Lint : c'est bo" >> $GITHUB_OUTPUT
+            echo "lint=success"
           else
             echo "result=❌ Lint : pas ouf" >> $GITHUB_OUTPUT
+            echo "lint=failure"
             exit 1
           fi
 
@@ -49,3 +53,9 @@ jobs:
           git add README.md
           git commit -m "auto: mise à jour du statut du code" || echo "Pas de changements"
           git push
+
+      - name: build app
+        run: |
+          go build -o app main.go
+          echo "result=✅ Build : réussi" >> $GITHUB_OUTPUT
+          echo "build=success"
