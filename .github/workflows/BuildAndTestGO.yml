@@ -1,4 +1,4 @@
-name: Go
+name: BuildAndTestGO
 
 on: [push, pull_request]
 
