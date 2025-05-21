@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: mon-container
-          image: kevpoirier/image-app:latest   # ← ton image Docker
+          image: synerkevin/image-app:latest   # ← ton image Docker
           ports:
             - containerPort: 8080
