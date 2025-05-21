@@ -8,5 +8,5 @@ FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/app .
 EXPOSE 8080
-RUN ls -l /app && file /app/app
+RUN apk add --no-cache file && ls -l /app && file /app/app
 CMD ["./app"]
