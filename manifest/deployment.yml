@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poke-deployment
+  labels:
+    app: poker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poker
+  template:
+    metadata:
+      labels:
+        app: poker
+    spec:
+      containers:
+        - name: mon-container
+          image: image-app:latest   # ← ton image Docker
+          ports:
+            - containerPort: 8080
