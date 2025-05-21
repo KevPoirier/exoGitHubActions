@@ -20,4 +20,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: synerkevin/image-app:latest
+          tags: kevpoirier/image-app:latest
