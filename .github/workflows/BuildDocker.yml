@@ -20,4 +20,19 @@ jobs:
         with:
           context: .
           push: true
-          tags: synerkevin/image-app:latest
+          tags: |
+            synerkevin/image-app:latest
+            synerkevin/image-app:${{ env.TAG }}
+
+      - name: Update kustomization.yaml image tag
+        run: |
+          sed -i "s|newTag:.*|newTag: $TAG|" kustomization.yaml
+
+      - name: Set up Kubeconfig
+        run: echo "${KUBECONFIG_DATA}" > kubeconfig
+        env:
+          KUBECONFIG_DATA: ${{ secrets.KUBECONFIG }}
+
+      - name: Deploy with kubectl and kustomize
+        run: |
+          kubectl --kubeconfig=kubeconfig apply -k .
