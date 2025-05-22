@@ -1,22 +1,22 @@
 [
     {
-        "playerName": "Pepper",
+        "name": "Pepper",
         "wins": 5
     },
     {
-        "playerName": "Salt",
+        "name": "Salt",
         "wins": 3
     },
     {
-        "playerName": "Sage",
+        "name": "Sage",
         "wins": 2
     },
     {
-        "playerName": "Thyme",
+        "name": "Thyme",
         "wins": 1
     },
     {
-        "playerName": "Rosemary",
+        "name": "Rosemary",
         "wins": 0
     }
 ]
