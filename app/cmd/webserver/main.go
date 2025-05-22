@@ -17,7 +17,7 @@ func main() {
 	defer close()
 
 	server := poker.NewPlayerServer(store)
-	if err := http.ListenAndServe(":5000", server); err != nil {
+	if err := http.ListenAndServe(":8080", server); err != nil {
 		log.Fatalf("could not listent on port 5000 %v", err)
 	}
 }
