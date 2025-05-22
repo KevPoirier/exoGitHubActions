@@ -18,5 +18,25 @@
     {
         "Name": "Rosemary",
         "Wins": 0
+    },
+    {
+        "Name": "Oregano",
+        "Wins": 0
+    },
+    {
+        "Name": "Basil",
+        "Wins": 0
+    },
+    {
+        "Name": "Cilantro",
+        "Wins": 0
+    },
+    {
+        "Name": "Chili",
+        "Wins": 0
+    },
+    {
+        "Name": "Garlic",
+        "Wins": 0
     }
 ]
