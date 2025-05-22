@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mon-container
-          image: synerkevin/image-app:<tag>
+          image: synerkevin/image-app
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
