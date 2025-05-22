@@ -20,4 +20,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: synerkevin/image-app:latest
+          tags: |
+            synerkevin/image-app:latest
+            synerkevin/image-app:${{ github.sha }}
