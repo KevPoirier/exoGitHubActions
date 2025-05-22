@@ -1,27 +1,27 @@
 [
     {
         "Name": "Pepper",
-        "Wins": 5
+        "Wins": 55
     },
     {
         "Name": "Salt",
-        "Wins": 4
+        "Wins": 43
     },
     {
         "Name": "Sage",
-        "Wins": 2
+        "Wins": 22
     },
     {
         "Name": "Thyme",
-        "Wins": 1
+        "Wins": 11
     },
     {
         "Name": "Rosemary",
-        "Wins": 0
+        "Wins": 5
     },
     {
         "Name": "Oregano",
-        "Wins": 0
+        "Wins": 4
     },
     {
         "Name": "Basil",
