@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
         - name: mon-container
-          image: synerkevin/image-app:latest   # ← ton image Docker
+          image: synerkevin/image-app:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
