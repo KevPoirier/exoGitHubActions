@@ -19,3 +19,11 @@ spec:
           image: synerkevin/image-app:latest   # ← ton image Docker
           ports:
             - containerPort: 8080
+          volumeMounts:
+          - name: poker-db-volume
+            mountPath: /app/game.db.json
+            subPath: game.db.json
+      volumes:
+        - name: poker-db-volume
+          persistentVolumeClaim:
+            claimName: poker-db-pvc
