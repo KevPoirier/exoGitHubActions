@@ -9,7 +9,7 @@ import (
 const dbFileName = "game.db.json"
 
 func main() {
-	log.Println("🏁 [INFO] Starting Poker Server...")
+	log.Println("🏁 [INFO] Starting Poker Server for update...")
 	store, close, err := poker.FileSystemPlayerStoreFromFile(dbFileName)
 
 	if err != nil {
