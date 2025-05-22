@@ -9,9 +9,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Generate short Git SHA tag
-        id: generate_tag
-        run: echo "tag=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Extract image tag from kustomization.yaml
+        id: extract_tag
+        run: |
+            TAG=$(grep 'newTag:' manifest/kustomization.yaml | awk '{print $2}')
+            echo "TAG=$TAG" >> $GITHUB_ENV
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -26,20 +28,4 @@ jobs:
           push: true
           tags: |
             synerkevin/image-app:latest
-            synerkevin/image-app:${{ steps.generate_tag.outputs.tag }}
-
-      - name: Update kustomization.yaml image tag
-        working-directory: manifest
-        run: |
-          sed -i "s|newTag:.*|newTag: $TAG|" kustomization.yaml
-        shell: bash
-        env:
-          TAG: ${{ steps.generate_tag.outputs.tag }}
-
-      - name: Commit and push updated kustomization.yaml
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add manifest/kustomization.yaml
-          git commit -m "Update image tag to ${{ steps.generate_tag.outputs.tag }}"
-          git push
+            synerkevin/image-app:${{ steps.extract_tag.outputs.TAG }}
