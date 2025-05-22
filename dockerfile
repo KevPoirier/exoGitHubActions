@@ -8,5 +8,6 @@ FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/webserver .
 COPY app/cmd/webserver/game.db.json .
+RUN apk add --no-cache file && ls -l /app && file /app/app
 EXPOSE 8080
 CMD ["./webserver"]
