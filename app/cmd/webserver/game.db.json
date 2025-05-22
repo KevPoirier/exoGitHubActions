@@ -38,5 +38,29 @@
     {
         "Name": "Garlic",
         "Wins": 0
+    },
+    {
+        "Name": "Onion",
+        "Wins": 0
+    },
+    {
+        "Name": "Ginger",
+        "Wins": 0
+    },
+    {
+        "Name": "Turmeric",
+        "Wins": 0
+    },
+    {
+        "Name": "Cinnamon",
+        "Wins": 0
+    },
+    {
+        "Name": "Nutmeg",
+        "Wins": 0
+    },
+    {
+        "Name": "Clove",
+        "Wins": 0
     }
 ]
