@@ -20,6 +20,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            synerkevin/image-app:latest
-            synerkevin/image-app:1.0.0
+          tags: synerkevin/image-app:latest
