@@ -3,4 +3,4 @@ resources:
   - service.yml
 images:
   - name: synerkevin/image-app
-    newTag: main
+    newTag: 954195ee37a16556770689e5782f900dfaa352cc
