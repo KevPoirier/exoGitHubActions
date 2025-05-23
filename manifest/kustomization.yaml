@@ -1,6 +1,0 @@
-resources:
-  - deployment.yml
-  - service.yml
-images:
-  - name: synerkevin/image-app
-    newTag: 954195ee37a16556770689e5782f900dfaa352cc
