@@ -15,7 +15,7 @@ jobs:
         run: echo "IMAGE_TAG=$(echo ${{ github.ref }} | awk -F '/' '{ print $NF }')" >> $GITHUB_OUTPUT
   build-docker-image:
     needs: [extract-image-tag]
-    uses: KevPoirier/actions/.github/workflows/build-docker.yml@main
+    uses: KevPoirier/actions/.github/workflows/build-docker.yaml@main
     secrets:
       docker_user: ${{ secrets.DOCKERHUB_USERNAME }}
       docker_password: ${{ secrets.DOCKERHUB_TOKEN }}
