@@ -9,5 +9,7 @@ on:
 jobs:
     deploy-prod:
         uses: KevPoirier/actions/.github/workflows/trigger-deploy.yml@main
-        with: 
-            image_tag: ${{ inputs.tag }}
+        with:
+          image_tag: ${{ inputs.tag }}
+        secrets:
+          gitops_pat: ${{ secrets.GITOPS_PAT }}
