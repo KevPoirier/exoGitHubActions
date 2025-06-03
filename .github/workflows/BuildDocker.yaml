@@ -4,6 +4,16 @@ on:
     push:
         tags:
             - 'v*.*.*'
+    workflow_call:
+      inputs:
+        image_tag:
+          required: true
+          type: string
+      secrets:
+        docker_user:
+          required: true
+        docker_password:
+          required: true
 
 jobs:
   extract-image-tag:
