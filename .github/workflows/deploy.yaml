@@ -11,5 +11,6 @@ jobs:
         uses: KevPoirier/actions/.github/workflows/trigger-deploy.yml@main
         with:
           image_tag: ${{ inputs.tag }}
+          service_name: poker
         secrets:
           gitops_pat: ${{ secrets.GITOPS_PAT }}
