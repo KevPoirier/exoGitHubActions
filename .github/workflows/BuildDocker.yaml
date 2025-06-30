@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       sonarqube:
-        image: sonarqube:lts
+        image: sonarqube:9.9-community
         ports:
           - 9000:9000
         options: >-
