@@ -10,7 +10,7 @@ const dbFileName = "game.db.json"
 
 func main() {
 
-	log.Println("🏁 [INFO] Starting Poker Server version 0.1.14...")
+	log.Println("🏁 [INFO] Starting Poker Server version 0.1.15...")
 
 	store, close, err := poker.FileSystemPlayerStoreFromFile(dbFileName)
 
