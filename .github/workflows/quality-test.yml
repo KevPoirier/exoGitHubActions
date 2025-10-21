@@ -1,0 +1,42 @@
+name: Quality Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        type: string
+        required: true
+        
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+        
+    services:
+      api:
+        image: synerglass/spw:${{ inputs.tag }}
+        ports:
+          - 8080:8080
+        credentials:
+          username: ${{ secrets.DOCKER_USER_K8S }}
+          password: ${{ secrets.DOCKER_PASS_K8S }}
+
+    steps:
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer les dépendances
+        run: pip install requests jinja2
+
+      - name: Exécuter les tests d’API
+        env:
+          BASE_URL: http://localhost:8080
+        run: python path/to/your_test_script.py
+
+      - name: Upload du rapport HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-report
+          path: report.html

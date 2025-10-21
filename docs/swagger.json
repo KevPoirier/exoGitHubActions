@@ -1,0 +1,88 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/league": {
+            "get": {
+                "description": "Get the current league standings",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get League",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/poker.Player"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/players/{name}": {
+            "get": {
+                "description": "Get the current score of a player",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get score",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Player Name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Record a win for a player",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Add a win",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Player Name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Accepted"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "poker.Player": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "wins": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

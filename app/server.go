@@ -38,6 +38,11 @@ func NewPlayerServer(store PlayerStore) *PlayerServer {
 	return p
 }
 
+// @Summary Get League
+// @Description Get the current league standings
+// @Produce json
+// @Success 200 {array} Player
+// @Router /league [get]
 func (p *PlayerServer) leagueHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", jsonContentType)
 	json.NewEncoder(w).Encode(p.store.GetLeague())
@@ -54,6 +59,12 @@ func (p *PlayerServer) playerHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// @Summary Get score
+// @Description Get the current score of a player
+// @Param name path string true "Player Name"
+// @Produce json
+// @Success 200 {integer} int
+// @Router /players/{name} [get]
 func (p *PlayerServer) showScore(w http.ResponseWriter, player string) {
 
 	score := p.store.GetPlayerScore(player)
@@ -65,6 +76,12 @@ func (p *PlayerServer) showScore(w http.ResponseWriter, player string) {
 	fmt.Fprint(w, score)
 }
 
+// @Summary Add a win
+// @Description Record a win for a player
+// @Param name path string true "Player Name"
+// @Produce json
+// @Success 202
+// @Router /players/{name} [post]
 func (p *PlayerServer) processWin(w http.ResponseWriter, player string) {
 	p.store.RecordWin(player)
 	w.WriteHeader(http.StatusAccepted)

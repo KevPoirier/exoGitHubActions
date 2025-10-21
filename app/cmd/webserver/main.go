@@ -2,8 +2,11 @@ package main
 
 import (
 	poker "exoGitHubActions/app"
+	_ "exoGitHubActions/docs"
 	"log"
 	"net/http"
+
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
 const dbFileName = "game.db.json"
@@ -18,9 +21,13 @@ func main() {
 		log.Fatalf("❌ [ERROR] Failed to load player store: %v", err)
 	}
 	defer close()
+	http.Handle("/swagger/", httpSwagger.WrapHandler)
 
 	server := poker.NewPlayerServer(store)
-	if err := http.ListenAndServe(":8080", server); err != nil {
-		log.Fatalf("could not listent on port 8080 %v", err)
+	mux := http.NewServeMux()
+	mux.Handle("/swagger/", httpSwagger.WrapHandler)
+	mux.Handle("/", server)
+	if err := http.ListenAndServe(":8081", mux); err != nil {
+		log.Fatalf("could not listent on port 8081 %v", err)
 	}
 }

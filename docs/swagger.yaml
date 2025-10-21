@@ -1,0 +1,56 @@
+definitions:
+  poker.Player:
+    properties:
+      name:
+        type: string
+      wins:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /league:
+    get:
+      description: Get the current league standings
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/poker.Player'
+            type: array
+      summary: Get League
+  /players/{name}:
+    get:
+      description: Get the current score of a player
+      parameters:
+      - description: Player Name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      summary: Get score
+    post:
+      description: Record a win for a player
+      parameters:
+      - description: Player Name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+      summary: Add a win
+swagger: "2.0"
