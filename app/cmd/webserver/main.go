@@ -9,6 +9,7 @@ import (
 	httpSwagger "github.com/swaggo/http-swagger"
 )
 
+// /test
 const dbFileName = "game.db.json"
 
 func main() {
